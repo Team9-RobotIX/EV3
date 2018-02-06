@@ -24,7 +24,7 @@ while button.any() == False:
     inst = json.loads(instString) #converts from string to dictionary
     print(inst)
     print(gyro.value())
-    forward = inst['onOff'] == 1 
+    forward = inst['onOff'] == 1
     rotate = abs(gyro.value() - inst['turnAngle']) > 2
     if forward and not rotate:
         motorLeft.run_forever(speed_sp = 100)
