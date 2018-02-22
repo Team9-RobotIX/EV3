@@ -27,8 +27,8 @@ while button.any() == False:
     forward = inst['onOff'] == 1
     rotate = abs(gyro.value() - inst['turnAngle']) > 2
     if forward and not rotate:
-        motorLeft.run_forever(speed_sp = 100)
-        motorRight.run_forever(speed_sp = 100)
+        motorLeft.run_forever(speed_sp = 300)
+        motorRight.run_forever(speed_sp = 300)
     else:
         motorLeft.run_forever(speed_sp = 0)
         motorRight.run_forever(speed_sp = 0)
@@ -36,11 +36,11 @@ while button.any() == False:
         while abs(gyro.value() - inst['turnAngle']) > 1:
             print('    ',gyro.value(),', ',inst['turnAngle'])
             if gyro.value() > inst['turnAngle']:
-                motorLeft.run_forever(speed_sp = -30)
-                motorRight.run_forever(speed_sp = 30)
+                motorLeft.run_forever(speed_sp = -90)
+                motorRight.run_forever(speed_sp = 90)
             else:
-                motorLeft.run_forever(speed_sp = 30)
-                motorRight.run_forever(speed_sp = -30)
+                motorLeft.run_forever(speed_sp = 90)
+                motorRight.run_forever(speed_sp = -90)
         motorLeft.run_forever(speed_sp = 0)
         motorRight.run_forever(speed_sp = 0)
 print('Ending execution')
