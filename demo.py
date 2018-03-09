@@ -66,16 +66,16 @@ class ExecutionThread (threading.Thread):
             motorRight.run_forever(speed_sp = 0)
             return
         forward = instruction['turnAngle'] == 0
+        remaining = instruction['distance']
         if forward:
             ultra.mode = 'US-DIST-CM'
             dist = ultra.value()
-            #remaining = instruction['onOff']
             print("DIST:",dist)
             if dist > 100:
-            #    motorLeft.run_forever(speed_sp = remaining/4 - c*10)
-            #    motorRight.run_forever(speed_sp = remaining/4 + c*10)
-                motorLeft.run_forever(speed_sp=50)
-                motorRight.run_forever(speed_sp=50)
+                motorLeft.run_forever(speed_sp = remaining/4 - c*20)
+                motorRight.run_forever(speed_sp = remaining/4 + c*20)
+            #motorLeft.run_forever(speed_sp=50)
+            #motorRight.run_forever(speed_sp=50)
             if dist < 100:
                 motorLeft.run_forever(speed_sp=0)
                 motorRight.run_forever(speed_sp=0)
