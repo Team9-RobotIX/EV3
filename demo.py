@@ -72,8 +72,8 @@ class ExecutionThread (threading.Thread):
             dist = ultra.value()
             print("DIST:",dist)
             if dist > 100:
-                motorLeft.run_forever(speed_sp = remaining/4 + 10 - c*20)
-                motorRight.run_forever(speed_sp = remaining/4 + 10 + c*20)
+                motorLeft.run_forever(speed_sp = remaining/2 + 10 - c*20)
+                motorRight.run_forever(speed_sp = remaining/2 + 10 + c*20)
             #motorLeft.run_forever(speed_sp=50)
             #motorRight.run_forever(speed_sp=50)
             if dist < 100:
