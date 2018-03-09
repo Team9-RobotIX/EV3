@@ -69,11 +69,13 @@ class ExecutionThread (threading.Thread):
         if forward:
             ultra.mode = 'US-DIST-CM'
             dist = ultra.value()
-            remaining = instruction['onOff']
+            #remaining = instruction['onOff']
             print("DIST:",dist)
             if dist > 100:
-                motorLeft.run_forever(speed_sp = remaining/4 - c*10)
-                motorRight.run_forever(speed_sp = remaining/4 + c*10)
+            #    motorLeft.run_forever(speed_sp = remaining/4 - c*10)
+            #    motorRight.run_forever(speed_sp = remaining/4 + c*10)
+                motorLeft.run_forever(speed_sp=50)
+                motorRight.run_forever(speed_sp=50)
             if dist < 100:
                 motorLeft.run_forever(speed_sp=0)
                 motorRight.run_forever(speed_sp=0)
