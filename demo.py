@@ -69,10 +69,11 @@ class ExecutionThread (threading.Thread):
         if forward:
             ultra.mode = 'US-DIST-CM'
             dist = ultra.value()
+            remaining = instruction['onOff']
             print("DIST:",dist)
             if dist > 100:
-                motorLeft.run_forever(speed_sp = 50 - c*10)
-                motorRight.run_forever(speed_sp = 50 + c*10)
+                motorLeft.run_forever(speed_sp = remaining/4 - c*10)
+                motorRight.run_forever(speed_sp = remaining/4 + c*10)
             if dist < 100:
                 motorLeft.run_forever(speed_sp=0)
                 motorRight.run_forever(speed_sp=0)
@@ -81,7 +82,9 @@ class ExecutionThread (threading.Thread):
             currentAngle = gyro.value()
             diff = targetAngle - currentAngle #distance to go in degrees
             #speed = (diff*diff)*(80/(180*180)) * 2 + 10
-            speed = 20
+            speed = 30
+            if abs(diff) < 20:
+                speed = 10
             if diff > 0:
                 motorLeft.run_forever(speed_sp = -speed)
                 motorRight.run_forever(speed_sp = speed)
