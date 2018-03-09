@@ -100,6 +100,9 @@ instrThread = InstructionThread()
 execThread.start()
 instrThread.start()
 
+execThread.join()
+instrThread.join()
+
 motorLeft.run_forever(speed_sp = 0)
 motorRight.run_forever(speed_sp = 0)
 
