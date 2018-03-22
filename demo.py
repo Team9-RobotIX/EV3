@@ -5,8 +5,9 @@ import urllib.request as req
 import ev3dev.ev3 as ev3
 import time
 import json
+from config import Config
 
-link = 'http://18.219.63.23/flaskapp/'
+link = Config.BASE_URL + '/flaskapp/'
 
 motorLeft = ev3.LargeMotor('outA')
 motorRight = ev3.LargeMotor('outD')
